@@ -17,26 +17,22 @@
 \usepackage[font=small,skip=0pt]{caption}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{xcolor}
+\usepackage{xcolor,colortbl}
+\usepackage{multirow}
 \usepackage[sfdefault,scale=0.85]{roboto}
 
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead{}
 \fancyfoot[C]{\fontsize{8}{10}}
-% \rhead{Overleaf}
-% \lhead{Guides and tutorials}
 \cfoot{\fontsize{10}{10}\leavevmode\selectfont\color{gray}{σελ. \thepage \space από \pageref{LastPage}}}
-
-% \usepackage[backend=biber, style=ieee, sorting=ynt]{biblatex}
-% \addbibresource{bib/papers.bib}
-% \addbibresource{bib/books.bib}
-% \addbibresource{bib/misc.bib}
 
 \graphicspath{{assets/images/}}
 
 \def\tl{\textlatin}
 \def\tg{\textgreek}
+
+\captionsetup[table]{skip=10pt}
 
 
 %======================================================================
