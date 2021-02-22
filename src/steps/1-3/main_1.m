@@ -55,16 +55,17 @@ for ts_i = ['a', 'b']
         figure, clf, grid on, hold on
         set(gca, 'FontName', 'JetBrains Mono')
         set(gcf, 'Color', [1 1 1])
-        plot(x_seasonal_component(1:14), '.-'), xlabel('t (day)'), ylabel(['seasonal\_component(X_b)(t)'])
+        plot(x_seasonal_component(1:14), 'o-', 'LineWidth', 2)
+        xlabel('t (day)'), ylabel(['seasonal\_component(X_b)(t)'])
         title(['X_b Seasonal Component (N = 14 days)'], 'FontSize', 14)
         set(gcf, 'Position', 1.0e+03*[0.662428571428571   0.361000000000000   1.288571428571428   0.725714285714286])
         % Deseason Timeseries
         fprintf('Removing seasonality of X_%c, N = %d\n', ts_i, 14);
         x = x - x_seasonal_component;
-        % Zero-mean Timeseries
-        mu_x = mean(x);
-        fprintf('Removing mean of X_%c, mu = %.4f\n', ts_i, mu_x);
-        x = x - mu_x;
+%         % Zero-mean Timeseries
+%         mu_x = mean(x);
+%         fprintf('Removing mean of X_%c, mu = %.4f\n', ts_i, mu_x);
+%         x = x - mu_x;
         % Plot history, autocorrelation & partial autocorrelation
         history_with_smoothing(x, 7, ['X_{' ts_i '_{deseasoned}}'])
         autocorrelation_with_limits(x, max_lag, ['X_{' ts_i '_{deseasoned}} (sqrt(Y_' ts_i ') + 1st differences detrend + deseason) Autocorrelation Plot']);

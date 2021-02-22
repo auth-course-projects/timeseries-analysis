@@ -5,7 +5,7 @@ maxtau = 30;
 %% Get desired timeseries
 % Fetch columns of the given Excel file (VideoViews.xlsx)
 [y_a, y_b] = get_columns([3, 3+10]);
-for ts_i = ['a', 'b']
+for ts_i = ['a' 'b']
     eval(['y = y_' ts_i ';']);
     
     % Get detrended timeseries from main_1.m
@@ -59,8 +59,8 @@ for ts_i = ['a', 'b']
     if ts_i == 'b'
         % In "B" timeseries the (9,9) is way too big, so we change them to 
         % smaller orders so as to avoid possible overfitting
-%         p_opt = 5 - 1;
-%         q_opt = 5 - 1;
+        p_opt = 5 - 1;
+        q_opt = 5 - 1;
     end
     fprintf('AIC: p_opt = %d, q_opt = %d --> ARIMA(%d,1,%d)\n', p_opt, ...
         q_opt, p_opt, q_opt)
