@@ -74,7 +74,7 @@ end
 
 %% Compute Mean Change Points (MCPs)
 N = length(x_deseasoned);
-mcps = NaN * zeros(N, 1);
+mcps = zeros(N, 1);
 % 1) Fit model on the first `n0` samples
 mdl = fitArmaInSamples(x_deseasoned, 1, n0, p_opt, q_opt);
 % 2) Define criterion
@@ -83,7 +83,7 @@ alpha_cps = zeros(100, 2);
 alpha_cps_i = 1;
 alpha_cps(alpha_cps_i, :) = [n0, alpha];
 % 3) Check criterion in loop
-s = zeros(N - n0 - T, 1);
+s = NaN * zeros(N - n0 - T, 1);
 x_hat = zeros(N, 1);
 x_hat(1:n0) = x_deseasoned(1:n0);
 n = n0;
@@ -163,16 +163,11 @@ if (display)
     hold off
 
     % and on initial timeseries
-    figure, clf, grid on, hold on
-    set(gca, 'FontName', 'JetBrains Mono')
-    set(gcf, 'Color', [1 1 1])
-    plot(1:length(y), y, '.-')
+    history_with_smoothing(y, 7, ['y_' ts_i '']);
     for i = mcps
         line([i i], ylim, 'Color', 'black', 'LineWidth', 2)
     end
     title(['Y_' ts_i ' Mean Change Points (MCPs) (n_0=' num2str(n0) ', T=' num2str(T) ', lambda_{std}=' num2str(lambda_std) ', choice="' choice '")'], 'FontSize', 14, 'FontName', 'JetBrains Mono')
-    xlabel('t'), ylabel(['y_' ts_i '(t)'])
-    set(gcf, 'Position', 1.0e+03*[0.662428571428571   0.361000000000000   1.288571428571428   0.725714285714286])
     hold off
 end
 

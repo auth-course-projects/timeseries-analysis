@@ -91,6 +91,3 @@ for ts_i = ['a', 'b']
     end
 end
 
-% end
-% plot(1:0.05:2, mcps_len, 'o-', 'LineWidth', 2.0)
-
